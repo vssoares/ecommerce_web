@@ -11,7 +11,11 @@ import { useEffect, useState } from 'react';
 import Logo from '@/assets/imagens/logo.webp';
 
 export default function MedicaoAnelPage() {
-  const calibration = parseFloat(localStorage.getItem('calibragem') || '0');
+  let calibration = 0;
+  if (typeof window !== 'undefined') {
+    // Verifica se está no cliente
+    calibration = parseFloat(localStorage.getItem('calibragem') || '0');
+  }
   const cardSize = 53.98;
   const min = (calibration * 14.96) / cardSize;
   const max = (calibration * 23.87) / cardSize;

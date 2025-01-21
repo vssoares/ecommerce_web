@@ -34,10 +34,6 @@ export function getHoopByDiameter(value: any) {
   return _getHoop(value, 'diameter');
 }
 
-function getHoopByCircumference(value: any) {
-  return _getHoop(value, 'circumference');
-}
-
 function _getHoop(value: any, mode: any) {
   for (let index = 0; index < table.length; index++) {
     if (value <= table[index][mode]) {
@@ -45,8 +41,4 @@ function _getHoop(value: any, mode: any) {
     }
   }
   return null;
-}
-
-function convertCMToMM(value: any) {
-  return value * 10;
 }
