@@ -16,7 +16,7 @@ export default function MedicaoAnelPage() {
       // Verifica se está no cliente
       calibration = parseFloat(localStorage.getItem('calibragem') || '0');
    }
-   const cardSize = 53.98;
+   const cardSize = 53.88;
    const min = (calibration * 14.96) / cardSize;
    const max = (calibration * 23.87) / cardSize;
    const step = cardSize / calibration;
