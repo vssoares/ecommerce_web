@@ -3,24 +3,24 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
-import { getHoopByDiameter } from '@/lib/convert-hoop';
+import { getDiameterByHoop, getHoopByDiameter } from '@/lib/convert-hoop';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Logo from '@/assets/imagens/logo.webp';
+import { Minus, Plus } from 'lucide-react';
 
 export default function MedicaoAnelPage() {
    const [calibration, setCalibration] = useState(0);
    const [sliderValue, setSliderValue] = useState(0);
-   const [medida, setMedida] = useState('');
+   const [medida, setMedida] = useState(0);
    const [min, setMin] = useState(0);
    const [max, setMax] = useState(0);
    const [step, setStep] = useState(0);
 
    useEffect(() => {
       if (typeof window !== 'undefined') {
-         // Verifica se está no cliente
          const storedCalibration = parseFloat(localStorage?.getItem('calibragem') || '0');
          setCalibration(storedCalibration);
       }
@@ -41,17 +41,26 @@ export default function MedicaoAnelPage() {
       if (calibration) {
          const cardSize = 53.88;
          const mm = calibration / cardSize;
+         console.log(sliderValue / mm);
+
          setMedida(getHoopByDiameter(sliderValue / mm));
-      } else {
-         console.log(min);
       }
    }, [sliderValue, calibration]);
+
+   const alterarQuantidade = (value: number) => {
+      if (value >= 7 && value <= 35) {
+         const cardSize = 53.88;
+         const mm = calibration / cardSize;
+         let diameter = getDiameterByHoop(value);
+         setSliderValue(diameter * mm);
+      }
+   };
 
    return (
       <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 px-4 py-8 dark:from-gray-900 dark:to-blue-900">
          <Card className="mx-auto w-full max-w-2xl">
             <CardHeader>
-               <CardTitle className="text-center text-2xl font-bold">Calibragem</CardTitle>
+               <CardTitle className="text-center text-2xl font-bold">Tamanho do Anel</CardTitle>
                <CardDescription>
                   Para descobrir a medida do seu anel é simples, coloque a peça em cima do círculo e
                   ajuste até que ambos fiquem do mesmo tamanho. <br /> Se o seu anel for anatômico,
@@ -67,7 +76,22 @@ export default function MedicaoAnelPage() {
                      <Image src={Logo} alt="logo " width={sliderValue} height={sliderValue} />
                   </div>
 
-                  <div className="my-5">Medida do anel: {medida}</div>
+                  <div className="mt-5">
+                     <p className="text-center">Medida do anel</p>
+                  </div>
+                  <div className="mb-5 flex items-center justify-center gap-2">
+                     <Minus
+                        onClick={() => alterarQuantidade(medida - 1)}
+                        className="cursor-pointer text-rosa"
+                        size={24}
+                     />
+                     <p className="text-2xl"> {medida}</p>
+                     <Plus
+                        onClick={() => alterarQuantidade(medida + 1)}
+                        className="cursor-pointer text-rosa"
+                        size={24}
+                     />
+                  </div>
 
                   <span className="mb-10">Arraste aqui</span>
 
@@ -82,9 +106,9 @@ export default function MedicaoAnelPage() {
                   />
 
                   <div className="mt-10 flex flex-col">
-                     <Link href="/digital/calibragem">
+                     <Link href="https://www.gisantostore.com.br/aneis">
                         <Button variant={'rosa'} className="w-[250px]">
-                           Já calibrei
+                           Ir as compras
                         </Button>
                      </Link>
 
