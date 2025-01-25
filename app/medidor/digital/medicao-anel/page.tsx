@@ -38,7 +38,7 @@ export default function MedicaoAnelPage() {
    }
 
    return (
-      <div className="container mx-auto flex min-h-screen items-center justify-center px-4 py-8">
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 px-4 py-8 dark:from-gray-900 dark:to-blue-900">
          <Card className="mx-auto w-full max-w-2xl">
             <CardHeader>
                <CardTitle className="text-center text-2xl font-bold">Calibragem</CardTitle>
@@ -68,15 +68,18 @@ export default function MedicaoAnelPage() {
                      max={max}
                      step={step}
                      onValueChange={(value: any) => setSliderValue(value[0])}
+                     title={'bg-rose'}
                   />
 
                   <div className="mt-10 flex flex-col">
                      <Link href="/medidor/digital/calibragem">
-                        <Button className="w-[250px]">Já calibrei</Button>
+                        <Button variant={'rosa'} className="w-[250px]">
+                           Já calibrei
+                        </Button>
                      </Link>
 
                      <Link className="mt-3" href="/medidor/digital/calibragem">
-                        <Button variant={'link'} className="w-[250px]">
+                        <Button variant={'outline'} className="w-[250px]">
                            Voltar
                         </Button>
                      </Link>
