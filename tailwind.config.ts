@@ -93,6 +93,14 @@ const config: Config = {
                '4': 'hsl(var(--chart-4))',
                '5': 'hsl(var(--chart-5))'
             }
+         },
+         height: {
+            'screen-dvh': '100dvh', // Dynamic Viewport Height
+            'screen-svh': '100svh' // Small Viewport Height
+         },
+         minHeight: {
+            'screen-dvh': '100dvh',
+            'screen-svh': '100svh'
          }
       }
    },
