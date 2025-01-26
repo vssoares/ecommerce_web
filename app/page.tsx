@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 
 export const metadata = {
@@ -12,9 +12,9 @@ export const metadata = {
 export default function HomePage() {
    return (
       <>
-         <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-200 to-purple-200 px-6 py-10 dark:from-gray-800 dark:to-blue-800">
+         <div className="flex min-h-screen justify-center bg-gradient-to-br from-blue-200 to-purple-200 px-6 py-10 dark:from-gray-800 dark:to-blue-800 md:items-center">
             <Card className="mx-auto w-full max-w-3xl shadow-lg">
-               <CardHeader>
+               <CardContent className="flex h-full flex-col justify-evenly space-y-5 p-6 md:block">
                   <h1 className="text-center text-3xl font-extrabold text-gray-800 dark:text-gray-100">
                      Encontre o tamanho perfeito do seu anel!
                   </h1>
@@ -22,8 +22,6 @@ export default function HomePage() {
                      Escolha entre o Medidor Digital ou o Medidor Manual para descobrir o tamanho
                      ideal do seu anel.
                   </CardDescription>
-               </CardHeader>
-               <CardContent>
                   <div className="flex flex-col items-center justify-center space-y-6 sm:flex-row sm:space-x-6 sm:space-y-0">
                      <Link href="/digital/instrucao">
                         <Button variant={'rosa'}>Usar Medidor Digital</Button>
