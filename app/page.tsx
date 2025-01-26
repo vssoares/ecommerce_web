@@ -12,7 +12,7 @@ export const metadata = {
 export default function HomePage() {
    return (
       <>
-         <div className="h-screen-svh h-screen-dvh flex min-h-screen justify-center bg-gradient-to-br from-blue-200 to-purple-200 px-6 py-10 dark:from-gray-800 dark:to-blue-800 md:items-center">
+         <div className="h-screen-svh flex min-h-screen justify-center bg-gradient-to-br from-blue-200 to-purple-200 p-5 dark:from-gray-800 dark:to-blue-800 md:items-center md:py-5">
             <Card className="mx-auto w-full max-w-3xl shadow-lg">
                <CardContent className="flex h-full flex-col justify-evenly space-y-5 p-6 md:block">
                   <h1 className="text-center text-3xl font-extrabold text-gray-800 dark:text-gray-100">

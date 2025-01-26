@@ -2,25 +2,22 @@
 
 import gifInstrucao from '@/assets/imagens/calibration-ring.gif';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function InstrucaoDigitalPage() {
    return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 px-4 py-8 dark:from-gray-900 dark:to-blue-900">
-         <Card className="mx-auto w-full max-w-2xl">
-            <CardHeader>
+      <div className="h-screen-svh flex min-h-screen justify-center bg-gradient-to-br from-blue-200 to-purple-200 p-5 dark:from-gray-800 dark:to-blue-800 md:items-center md:py-5">
+         <Card className="mx-auto w-full max-w-3xl shadow-lg">
+            <CardContent className="flex h-full flex-col justify-evenly space-y-3 p-6 md:block">
                <CardTitle className="text-center text-2xl font-bold">Instrução</CardTitle>
                <CardDescription className="text-center text-lg text-gray-600 dark:text-gray-300">
-                  Para garantir a precisão da medição do aro, é necessário calibrar o medidor. É
-                  simples, rápido e fácil. Coloque um cartão sobre a tela e arraste a bolinha até
-                  que a figura fique da mesma largura que o cartão. (Siga o exemplo da imagem)
+                  Calibre o medidor colocando um cartão na tela e ajustando a bolinha até que a
+                  figura tenha a mesma largura. (Veja a imagem)
                </CardDescription>
-            </CardHeader>
-            <CardContent>
-               <div className="flex flex-col items-center">
-                  <Image width={200} src={gifInstrucao} alt="gif instrução"></Image>
+               <div className="mt-2 flex flex-col items-center">
+                  <Image width={150} src={gifInstrucao} alt="gif instrução"></Image>
                   <div className="mt-5 flex flex-col">
                      <Link href="/digital/calibragem">
                         <Button variant={'rosa'} className="w-[250px]">
