@@ -8,7 +8,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import Logo from '@/assets/imagens/logo.webp';
+import LogoImage from '@/assets/imagens/logo.webp';
+import Logo from '@/components/logo';
 import { Minus, Plus } from 'lucide-react';
 
 export default function MedicaoAnelPage() {
@@ -57,9 +58,12 @@ export default function MedicaoAnelPage() {
    };
 
    return (
-      <div className="h-screen-svh flex min-h-screen justify-center bg-gradient-to-br from-blue-200 to-purple-200 p-5 dark:from-gray-800 dark:to-blue-800 md:items-center md:py-5">
+      <div className="flex min-h-screen justify-center bg-gradient-to-br from-blue-200 to-purple-200 p-5 dark:from-gray-800 dark:to-blue-800 md:items-center md:py-5">
          <Card className="mx-auto w-full max-w-3xl shadow-lg">
             <CardContent className="flex h-full flex-col justify-evenly space-y-3 p-6 md:block">
+               <div>
+                  <Logo textClass="text-2xl md:text-3xl" width={50} height={50} alt="Logo" />
+               </div>
                <CardTitle className="text-center text-2xl font-bold">Tamanho do Anel</CardTitle>
                <CardDescription className="text-center">
                   Para descobrir a medida do seu anel, coloque-o sobre o círculo e ajuste até que
@@ -71,7 +75,7 @@ export default function MedicaoAnelPage() {
                      style={{ width: `${sliderValue}px`, height: `${sliderValue}px` }}
                      className="mb-10 rounded-full border-2 border-rosa dark:border-white"
                   >
-                     <Image src={Logo} alt="logo " width={sliderValue} height={sliderValue} />
+                     <Image src={LogoImage} alt="logo " width={sliderValue} height={sliderValue} />
                   </div>
 
                   <div className="mt-5">
