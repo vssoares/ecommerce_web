@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { getDiameterByHoop, getHoopByDiameter } from '@/lib/convert-hoop';
 import Image from 'next/image';
@@ -57,17 +57,15 @@ export default function MedicaoAnelPage() {
    };
 
    return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 px-4 py-8 dark:from-gray-900 dark:to-blue-900">
-         <Card className="mx-auto w-full max-w-2xl">
-            <CardHeader>
+      <div className="h-screen-svh flex min-h-screen justify-center bg-gradient-to-br from-blue-200 to-purple-200 p-5 dark:from-gray-800 dark:to-blue-800 md:items-center md:py-5">
+         <Card className="mx-auto w-full max-w-3xl shadow-lg">
+            <CardContent className="flex h-full flex-col justify-evenly space-y-3 p-6 md:block">
                <CardTitle className="text-center text-2xl font-bold">Tamanho do Anel</CardTitle>
-               <CardDescription>
-                  Para descobrir a medida do seu anel é simples, coloque a peça em cima do círculo e
-                  ajuste até que ambos fiquem do mesmo tamanho. <br /> Se o seu anel for anatômico,
-                  considere um número menor do que o indicado na medição do aro.
+               <CardDescription className="text-center">
+                  Para descobrir a medida do seu anel, coloque-o sobre o círculo e ajuste até que
+                  ambos fiquem do mesmo tamanho. <br /> Se o seu anel for anatômico, considere um
+                  número menor do que o indicado na medição.
                </CardDescription>
-            </CardHeader>
-            <CardContent>
                <div className="flex flex-col items-center">
                   <div
                      style={{ width: `${sliderValue}px`, height: `${sliderValue}px` }}

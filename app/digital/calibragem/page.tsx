@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -18,14 +18,12 @@ export default function CalibrationPage() {
    };
 
    return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 px-4 py-8 dark:from-gray-900 dark:to-blue-900">
-         <Card className="w-full max-w-2xl shadow-lg">
-            <CardHeader className="pb-4">
+      <div className="h-screen-svh flex min-h-screen justify-center bg-gradient-to-br from-blue-200 to-purple-200 p-5 dark:from-gray-800 dark:to-blue-800 md:items-center md:py-5">
+         <Card className="mx-auto w-full max-w-3xl shadow-lg">
+            <CardContent className="flex h-full flex-col justify-evenly space-y-3 p-6 md:block">
                <CardTitle className="bg-clip-text text-center text-3xl font-bold">
                   Calibragem
                </CardTitle>
-            </CardHeader>
-            <CardContent>
                <div className="flex flex-col items-center space-y-8">
                   <motion.div
                      initial={{ scale: 0.9, opacity: 0 }}
