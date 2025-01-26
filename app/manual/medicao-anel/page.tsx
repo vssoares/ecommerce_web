@@ -3,57 +3,29 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
-import { getDiameterByHoop, getHoopByDiameter } from '@/lib/convert-hoop';
-import Image from 'next/image';
+import { getCircunferenciaByHoop, getHoopByCircumference } from '@/lib/convert-hoop';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import LogoImage from '@/assets/imagens/logo.webp';
 import Logo from '@/components/logo';
 import { Minus, Plus } from 'lucide-react';
 
 export default function MedicaoAnelPage() {
-   const [calibration, setCalibration] = useState(0);
-   const [sliderValue, setSliderValue] = useState(0);
-   const [medida, setMedida] = useState(0);
-   const [min, setMin] = useState(0);
-   const [max, setMax] = useState(0);
-   const [step, setStep] = useState(0);
+   const [defaultSliderValue, setDefaultSliderValue] = useState(4.7);
+   const [sliderValue, setSliderValue] = useState(4.7);
+   const [medida, setMedida] = useState(7);
+   const min = 4.7;
+   const max = 7.5;
+   const step = 0.1;
 
    useEffect(() => {
-      if (typeof window !== 'undefined') {
-         const storedCalibration = parseFloat(localStorage?.getItem('calibragem') || '0');
-         setCalibration(storedCalibration);
-      }
-   }, []);
-
-   useEffect(() => {
-      if (calibration) {
-         const cardSize = 53.88;
-         const mm = calibration / cardSize;
-         setMin((calibration * 14.96) / cardSize);
-         setMax((calibration * 23.87) / cardSize);
-         setStep(cardSize / calibration);
-         setSliderValue((calibration * 14.96) / cardSize);
-      }
-   }, [calibration]);
-
-   useEffect(() => {
-      if (calibration) {
-         const cardSize = 53.88;
-         const mm = calibration / cardSize;
-         console.log(sliderValue / mm);
-
-         setMedida(getHoopByDiameter(sliderValue / mm));
-      }
-   }, [sliderValue, calibration]);
+      setMedida(getHoopByCircumference(sliderValue));
+   }, [sliderValue]);
 
    const alterarQuantidade = (value: number) => {
       if (value >= 7 && value <= 35) {
-         const cardSize = 53.88;
-         const mm = calibration / cardSize;
-         let diameter = getDiameterByHoop(value);
-         setSliderValue(diameter * mm);
+         setSliderValue(getCircunferenciaByHoop(value));
+         setDefaultSliderValue(getCircunferenciaByHoop(value));
       }
    };
 
@@ -66,21 +38,29 @@ export default function MedicaoAnelPage() {
                </div>
                <CardTitle className="text-center text-2xl font-bold">Tamanho do Anel</CardTitle>
                <CardDescription className="text-center">
-                  Para descobrir a medida do seu anel, coloque-o sobre o círculo e ajuste até que
-                  ambos fiquem do mesmo tamanho. <br /> Se o seu anel for anatômico, considere um
-                  número menor do que o indicado na medição.
+                  <ol>
+                     <li>Arraste a bolinha de acordo com a medida da régua.</li>
+                  </ol>
                </CardDescription>
                <div className="flex flex-col items-center">
-                  <div
-                     style={{ width: `${sliderValue}px`, height: `${sliderValue}px` }}
-                     className="mb-10 rounded-full border-2 border-rosa dark:border-white"
-                  >
-                     <Image src={LogoImage} alt="logo " width={sliderValue} height={sliderValue} />
-                  </div>
+                  <span className="mb-5 mt-10">Arraste aqui</span>
+
+                  <span className="mb-5">{sliderValue} cm</span>
+
+                  <Slider
+                     className="w-full cursor-pointer"
+                     defaultValue={[defaultSliderValue]}
+                     min={min}
+                     max={max}
+                     step={step}
+                     onValueChange={(value: any) => setSliderValue(value[0])}
+                     color="rosa"
+                  />
 
                   <div className="mt-5">
                      <p className="text-center">Medida do anel</p>
                   </div>
+
                   <div className="mb-5 flex items-center justify-center gap-2">
                      <Minus
                         onClick={() => alterarQuantidade(medida - 1)}
@@ -95,18 +75,6 @@ export default function MedicaoAnelPage() {
                      />
                   </div>
 
-                  <span className="mb-10">Arraste aqui</span>
-
-                  <Slider
-                     className="w-full cursor-pointer"
-                     defaultValue={[min]}
-                     min={min}
-                     max={max}
-                     step={step}
-                     onValueChange={(value: any) => setSliderValue(value[0])}
-                     color="rosa"
-                  />
-
                   <div className="mt-10 flex flex-col">
                      <Link href="https://www.gisantostore.com.br/aneis">
                         <Button variant={'rosa'} className="w-[250px]">
@@ -114,7 +82,7 @@ export default function MedicaoAnelPage() {
                         </Button>
                      </Link>
 
-                     <Link className="mt-3" href="/digital/calibragem">
+                     <Link className="mt-3" href="/manual/instrucao">
                         <Button variant={'outline'} className="w-[250px]">
                            Voltar
                         </Button>

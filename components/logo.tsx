@@ -9,7 +9,11 @@ export default function Logo(props: any) {
             href={'https://www.gisantostore.com.br/aneis'}
             className="flex items-center justify-center"
          >
-            <Image src={LogoImage} alt="logo" width={props.width} height={props.height} />
+            <Image
+               src={LogoImage}
+               alt="logo"
+               className="h-[50px] w-[50px] md:h-[150px] md:w-[150px]"
+            />
             <span className={props?.textClass}>Gi Santos Store</span>
          </Link>
       </>

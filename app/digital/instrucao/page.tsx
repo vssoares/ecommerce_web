@@ -13,7 +13,7 @@ export default function InstrucaoDigitalPage() {
          <Card className="mx-auto w-full max-w-3xl shadow-lg">
             <CardContent className="flex h-full flex-col justify-evenly space-y-3 p-6 md:block">
                <div>
-                  <Logo textClass="text-2xl md:text-3xl" width={50} height={50} alt="Logo" />
+                  <Logo textClass="text-2xl md:text-3xl" alt="Logo" />
                </div>
                <CardTitle className="text-center text-2xl font-bold">Instrução</CardTitle>
                <CardDescription className="text-center text-lg text-gray-600 dark:text-gray-300">

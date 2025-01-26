@@ -17,7 +17,7 @@ export default function HomePage() {
             <Card className="mx-auto w-full max-w-3xl shadow-lg">
                <CardContent className="flex h-full flex-col justify-evenly space-y-5 p-6 md:block">
                   <div>
-                     <Logo textClass="text-2xl md:text-3xl" width={50} height={50} alt="Logo" />
+                     <Logo textClass="text-2xl md:text-3xl" alt="Logo" />
                   </div>
                   <CardTitle className="bg-clip-text text-center text-2xl font-bold md:text-3xl">
                      Encontre o tamanho perfeito do seu anel!

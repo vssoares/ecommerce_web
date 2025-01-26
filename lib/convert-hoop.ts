@@ -42,6 +42,20 @@ export function getHoopByDiameter(value: any) {
    return _getHoop(value, 'diameter');
 }
 
+export function getCircunferenciaByHoop(value: any) {
+   for (let index = 0; index < table.length; index++) {
+      if (value === table[index].hoop) {
+         return table[index].circumference / 10;
+      }
+   }
+
+   return table[0].circumference * 10;
+}
+
+export function getHoopByCircumference(value: any) {
+   return _getHoop(value * 10, 'circumference');
+}
+
 function _getHoop(value: any, mode: any) {
    for (let index = 0; index < table.length; index++) {
       if (value <= table[index][mode]) {
